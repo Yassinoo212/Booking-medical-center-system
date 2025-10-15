@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: black; 
+      background-image: url('signupyz.png');
+      background-size:  cover; 
+      background-position:  center;
+      
+      background-repeat: no-repeat;
+      border-radius: 0 50% 50% 0; 
+    }
+    #signup-form {
+      width: 43%;
+      margin: 100px 20px 0 20px; 
+      padding: 50px;
+      background-color: lightblue;
+      border-radius: 7px;
+      opacity: 1.5;
+      float: left; 
+    }
+    #signup-form table {
+      width: 100%;
+      margin-top: 20px; 
+    }
+    #signup-form input[type="text"],
+    #signup-form input[type="number"],
+    #signup-form input[type="email"],
+    #signup-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #signup-form input[type="submit"] {
+      width: 100%;
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #signup-form input[type="submit"]:hover {
+      background-color: blueviolet;
+    }
+    td { color:#2980b9}
+    #button {
+      background-color: #2980b9; 
+      color: white;
+      padding: 15px 30px; 
+      border: none;
+      border-radius: 10px; 
+      margin: 0 10px; 
+      font-size: 18px; 
+      cursor: pointer;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <div id="signup-form">
+    <h1 style="text-align: center; color: #3498db">Create New Account</h1>
+    <form id="create-account-form" action="submit-create-account-form.html" method="post">
+      <table>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input type="text" id="name" name="name"></td>
+        </tr>
+        <tr>
+          <td><label for="age">Age:</label></td>
+          <td><input type="number" id="age" name="age"></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td><input type="email" id="email" name="email"></td>
+        </tr>
+        <tr>
+          <td><label for="password">Password:</label></td>
+          <td><input type="password" id="password" name="password"></td>
+        </tr>
+        <tr>
+          <td><label for="confirm-password">Confirm Password:</label></td>
+          <td><input type="password" id="confirm-password" name="confirm-password"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="submit" value="Create Account" onclick="redirectToLogin(event)"></td> 
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <script>
+   function validateForm() {
+  var name = document.getElementById('name').value;
+  var age = document.getElementById('age').value;
+  var password = document.getElementById('password').value;
+  var confirmPassword = document.getElementById('confirm-password').value;
+
+  var nameRegex = /^[a-zA-Z\s]*$/;
+  var ageRegex = /^\d+$/;
+  var passwordRegex = /^(?=.*[a-zA-Z]{3,})(?=.*\d).{4,}$/;
+
+  if (!name.match(nameRegex)) {
+    alert('Please enter a valid name (only letters).');
+    return false;
+  }
+
+  if (!age.match(ageRegex) || parseInt(age) < 18 || parseInt(age) <= 0) {
+    alert('Please enter a valid age (age should be a positive number, 18 or older).');
+    return false;
+  }
+
+  if (!password.match(passwordRegex)) {
+    alert('Please enter a valid password (minimum 3 letters, 1 capital letter, 1 number, 1 special character).');
+    return false;
+  }
+
+  if (password !== confirmPassword) {
+    alert('Passwords do not match.');
+    return false;
+  }
+
+  return true;
+}
+
+
+    function redirectToLogin(event) {
+      event.preventDefault(); 
+      if (validateForm()) {
+        window.location.href = "login.html";
+      }
+    }
+  </script>
+</body>
+</html>

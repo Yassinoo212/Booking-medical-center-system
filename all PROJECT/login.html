@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Existing</title>
+  <style>
+    
+    .sign-in-button {
+      background-color: blue;
+      color: black; 
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-right: 10px; 
+      cursor: pointer;
+      color: white;
+    }
+
+    .sign-in-button:hover {
+      background-color: cyan; 
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('loginyz.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; 
+      opacity: 1.5;
+      height: 100vh; 
+    }
+    #login-container {
+      width: 30%;
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 30px;
+      background-color: rgba(173, 216, 230, 0.9); 
+      border-radius: 10px;
+      text-align: center;
+    }
+    #login-container form {
+      margin-bottom: 20px;
+    }
+    #login-container input[type="email"],
+    #login-container input[type="password"] {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #login-container input[type="submit"] {
+      width: 40%;
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #login-container input[type="submit"]:hover {
+      background-color: cyan;
+    }
+    #login-container .sign-in-options {
+      margin-top: 20px;
+    }
+
+    
+    .signup-button {
+      background-color: #3299E7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .signup-button:hover {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <div id="login-container">
+    <h1>Login</h1>
+    <form id="login-form" action="submit-login-form.html" method="post">
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email"><br>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password"><br>
+      <input type="submit" value="Login" onclick="return checkLogin()">
+     
+      <button class="signup-button" onclick="return tosignup()">Don't have an account? Click here</button>
+    </form>
+   <div class="sign-in-options">
+    
+      <p>Sign in using:</p>
+      <button class="sign-in-button" onclick="window.open('https://www.google.com/', '_blank')">Google</button>
+      <button class="sign-in-button" onclick="window.open('https://www.facebook.com/', '_blank')">Facebook</button>
+      <button class="sign-in-button" onclick="window.open('https://www.apple.com/', '_blank')">Apple</button>
+   </div>
+  </div>
+
+  <script>
+    function checkLogin() {
+      window.location.href = 'doctors.html'; 
+      return false;
+    }
+    function tosignup () {
+       window.location.href = 'signup.html';
+       return false;
+       
+    }
+  </script>
+</body>
+</html>

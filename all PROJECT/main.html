@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Page</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> 
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color:#add8e6;
+    }
+    #header {
+      background-color:#add8e6  ; 
+      padding: 10px;
+      text-align: center;
+    }
+    #header button {
+      background-color: #add8e6; 
+      color: white;
+      padding: 15px 30px; 
+     border: none; 
+      border-radius: 10px; 
+      margin: 0 10px; 
+      font-size: 18px; 
+      cursor: pointer;
+     
+      background-size: cover;
+    }
+    #header button:hover {
+      background-color: #2c3e50; 
+    }
+
+    
+  #header button:nth-child(1) {
+      background-image: url('blackpfp.jpg');
+    }
+
+    #header button:nth-child(2) {
+      background-image: url('blackpfp.jpg');
+    }
+
+    #header button:nth-child(3) {
+      background-image: url('blackpfp.jpg');
+    }
+
+    #header button:nth-child(4) {
+      background-image: url('blackpfp.jpg');
+    }
+
+    #random-image {
+      width: 100%;
+      height: auto;
+    }
+    #random-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      opacity: 0.5; 
+      filter: blur(2px); 
+    }
+    .section-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+    .section {
+      flex-basis: calc(25% - 20px); 
+      background-color: #add8e6; 
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 14px; 
+      text-align: center;
+      font-style: italic; 
+    }
+    .section h2 {
+      margin-bottom: 10px;
+      font-size: 16px; 
+    }
+    .section p {
+      margin-bottom: 5px;
+    }
+    hr {
+      width: 100%;
+      border: none;
+      border-top: 1px solid #ccc; 
+      margin: 10px 0;
+    }
+    
+    .working-hours:hover {
+      color: blue;
+      cursor: pointer;
+    }
+    
+    .hour-slot {
+      cursor: pointer;
+      border-bottom: 1px solid #ddd; 
+      transition: background-color 0.3s; 
+    }
+    .hour-slot:hover {
+      background-color: #357885; 
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; padding: 20px; background-color: #add8e6;">YZ Medical Center</h1>
+
+  <div id="header">
+    <button onclick="redirectToLogin()">Login</button> 
+    <button onclick="redirectToSignup()">Sign Up</button>
+    <button onclick="redirectToDoctors()">Check Our Available Doctors Here!</button>
+    <a href="form.html"><button>Fill Form </button></a>
+  </div>
+  
+  <div id="random-image">
+    <img id="random-img" src="">
+  </div>
+  
+  <div id="doctor-list" style="display: none;">
+    <h2>Doctor List</h2>
+    <div class="doctor">
+      <h3>Dr. John Doe</h3>
+      <p>Specialty: Cardiologist</p>
+     
+      <p class="working-hours" onclick="redirectToBooking('Dr. John Doe', '9:00 AM - 5:00 PM')">Working Hours: 9:00 AM - 5:00 PM</p>
+    </div>
+    <div class="doctor">
+      <h3>Dr. Jane Smith</h3>
+      <p>Specialty: Neurologist</p>
+      
+      <p class="working-hours" onclick="redirectToBooking('Dr. Jane Smith', '10:00 AM - 6:00 PM')">Working Hours: 10:00 AM - 6:00 PM</p>
+    </div>
+    
+  </div>
+
+  <div class="section-container">
+    <div class="section">
+      <h2>Contact Information</h2>
+      <p>Email us:</p><a href="YZMedicalCenter@example.com">YZMedicalCenter@example.com</a>
+      <p>Phone: <a href="tel:+962 791623543">0791623543</a></p>
+      <p>Location: Amman,Karak,Irbid, jordan</p>
+      <p>Hours: Monday - Friday, 9:00 AM - 5:00 PM</p>
+    </div>
+
+    <div class="section">
+      <h2>Centers Available in Locations</h2>
+      <p>Amman Center</p>
+      <p>Alkarak Center</p>
+      <p>Irbid Center</p>
+   
+      <hr>
+      <h2>Copyrights and Establishment Dates</h2>
+      <p>© 1990 YE. All rights reserved.</p>
+      <p>Established in 1990 - Amman</p>
+      <p>Established in 2000 - Alkarak</p>
+      <p>Established in 2010 - Irbid</p>
+      
+    </div>
+
+    <div class="section">
+      <h2>Available Specialties</h2>
+      <p>Cardiology Center</p>
+      <p>Fetal Maternal Medicine Center</p>
+      <p>General Surgery Center</p>
+      <p>Neurology Center</p>
+      <p>Obstetrics & Gynaecology Center</p>
+      <p>Oral & Maxillofacial Surgery</p>
+      <p>Orthopedic Center</p>
+      <p>Paediatric Center</p>
+     
+    </div>
+
+    <div class="section">
+      <h2>Additional Information</h2>
+      <p>Police: 911</p>
+      <p>Ambulance: 911</p>
+    </div>
+  </div>
+
+  <script>
+    
+    function redirectToLogin() {
+      window.location.href = 'login.html';
+    }
+    
+    
+    function redirectToSignup() {
+      window.location.href = 'signup.html';
+    }
+
+ 
+    function redirectToDoctors() {
+      window.location.href = 'doctors.html';
+    }
+
+    
+    function redirectToBooking(doctorName, time) {
+      localStorage.setItem('selectedDoctor', doctorName);
+      localStorage.setItem('selectedTime', time);
+      window.location.href = 'bookings.html';
+    }
+
+    
+    var imageLinks = [
+     
+  //karak hostpital
+        'https://th.bing.com/th/id/R.35bc9c5c5574ffb656603650c335fd88?rik=Qfdn2bXbHiqPMg&pid=ImgRaw&r=0',
+       //albashir pic
+        'https://th.bing.com/th/id/R.3da6e172788edb27791a13483f7719da?rik=lFctHhy%2bceHnFw&pid=ImgRaw&r=0',
+       //emergancy entrance pics
+       'https://th.bing.com/th/id/OIP.MDwOq9aXP-aAtKxyJzbQIgHaDk?w=339&h=168&c=7&r=0&o=5&dpr=1.3&pid=1.7',
+       //chiled pic
+        'https://th.bing.com/th/id/OIP.upE8AY1FXnyHw-tiuRoMCQHaE8?rs=1&pid=ImgDetMain',
+       //dentist pic
+        'https://rshalimakan.com/wp-content/uploads/2023/06/6.jpeg',
+       //khcc pic
+        'https://th.bing.com/th/id/OIP.AToNa4gMqQxf8eg8cV_lBwHaE8?rs=1&pid=ImgDetMain',
+       //pharmacy pic
+        'https://www.propertyfinder.ae/blog/wp-content/uploads/2023/03/shutterstock_1952231947-1-800x450.jpeg',
+        //drugs pic
+        'https://indoreinstitute.com/wp-content/uploads/2021/09/pharmaceutical-industry.jpg',
+        //hosptial beds
+        'https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?cs=srgb&dl=pexels-pixabay-236380.jpg&fm=jpg',
+      
+    ];
+
+    var currentIndex = 0;
+    var imgElement = document.getElementById('random-img');
+
+    
+    function displayNextImage() {
+    currentIndex++; 
+    if (currentIndex >= imageLinks.length) { 
+        currentIndex = 0;
+    }
+    imgElement.src = imageLinks[currentIndex]; 
+    setTimeout(displayNextImage, 2500); 
+}
+
+
+    displayNextImage();
+  </script>
+</body>
+</html>
+

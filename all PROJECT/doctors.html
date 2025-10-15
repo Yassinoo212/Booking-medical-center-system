@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Doctors</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff; 
+      background-size: cover; 
+      background-position:center ;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      opacity: 1.5;
+      margin: 0; 
+      padding-top: 1px; 
+    }
+    .doctor {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .doctor img {
+      max-width: 150px; 
+      border-radius: 50%; 
+    }
+    table {
+      width: 90%; 
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+      font-size: 20px;
+    }
+    th {
+      background-color:#3299E7 ; 
+    }
+    tr{color: black;}
+    td{color:black;font-size:25px; }
+    .button-col {
+      width: 10%; 
+    }
+    .button-col a {
+      display: block;
+      text-align: center;
+      padding: 5px;
+      background-color:#3299E7; 
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button-col a:hover {
+      background-color: darkblue; 
+    }
+
+    
+    thead {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 999; 
+    }
+    
+    
+  </style>
+</head>
+<body> 
+  <h2 style="color: #3299E7;text-align: center;font-size:40px ">Available Doctors</h2>
+  
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Specialty</th>
+        <th>Languages</th>
+        <th>Working Hours</th>
+        <th>Contact Number</th>
+        <th>Image</th>
+        <th class="button-col">Book Appointment</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="doctor">
+        <td >Dr. John Doe</td>
+        <td>Cardiologist</td>
+        <td>English, Urdu, French</td>
+        <td>6:00 AM - 9:00 AM , 3:00 pm - 6:00 pm </td>
+        <td>123-456-7890</td>
+        <td><img src="doctor1.jpg" alt="Dr. John Doe"></td> 
+        <td class="button-col"><a href="bookings.html?doctor=Dr.%20John%20Doe">View</a></td> 
+      </tr>
+      <tr class="doctor">
+        <td>Dr. Jane Smith</td>
+        <td>Neurologist</td>
+        <td>Arabic, German, English</td>
+        <td>7:00 AM - 10:00 AM , 3:00 pm - 6:00 pm </td>
+        <td>987-654-3210</td>
+        <td><img src="doctor2.jpg" alt="Dr. Jane Smith"></td>
+        <td class="button-col"><a href="bookings.html?doctor=Dr.%20Jane%20Smith">View</a></td> 
+      </tr>
+      <tr class="doctor">
+        <td>Dr. Anthony Fauci</td>
+        <td>General Surgery</td>
+        <td>French, Urdu, Arabic</td>
+        <td>8:00 AM - 11:00 AM , 3:00 pm - 6:00 pm </td>
+        <td>123-456-7890</td>
+        <td><img src="doctor3.jpg" alt="Dr. Anthony Fauci"></td>
+        <td class="button-col"><a href="bookings.html?doctor=Dr.%20Anthony%20Fauci">View</a></td> 
+      </tr>
+      <tr class="doctor">
+        <td>Dr. Jane Goodall</td>
+        <td>Obstetrics & Gynaecology</td>
+        <td>English, German, Urdu</td>
+        <td>9:00 AM - 12:00 PM , 3:00 pm - 6:00 pm </td>
+        <td>123-456-7890</td>
+        <td><img src="doctor4.jpg" alt="Dr. Jane Goodall"></td>
+        <td class="button-col"><a href="bookings.html?doctor=Dr.%20Jane%20Goodall">View</a></td> 
+      </tr>
+      <tr class="doctor">
+        <td>Dr. Albert Schweitzer</td>
+        <td>Oral & Maxillofacial Surgery</td>
+        <td>Arabic, French, German</td>
+        <td>10:00 AM - 1:00 PM , 3:00 pm - 6:00 pm </td>
+        <td>123-456-7890</td>
+        <td><img src="doctor5.jpg" alt="Dr. Albert Schweitzer"></td>
+        <td class="button-col"><a href="bookings.html?doctor=Dr.%20Albert%20Schweitzer">View</a></td> 
+      </tr>
+      <tr class="doctor">
+        <td>Dr. Mae Jemison</td>
+        <td>Orthopedic</td>
+        <td>Urdu, English, Arabic</td>
+        <td>11:00 AM - 2:00 PM , 3:00 pm - 6:00 pm </td>
+        <td>123-456-7890</td>
+        <td><img src="doctor6.jpg" alt="Dr. Mae Jemison"></td>
+        <td class="button-col"><a href="bookings.html?doctor=Dr.%20Mae%20Jemison">View</a></td> 
+      </tr>
+      <tr class="doctor">
+        <td>Dr. Patch Adams</td>
+        <td>Paediatric</td>
+        <td>German, French, English</td>
+        <td>12:00 PM - 3:00 PM , 3:00 pm - 6:00 pm </td>
+        <td>123-456-7890</td>
+        <td><img src="doctor7.jpg" alt="Dr. Patch Adams"></td>
+        <td class="button-col"><a href="bookings.html?doctor=Dr.%20Patch%20Adams">View</a></td> 
+      </tr>
+     
+    </tbody>
+  </table>
+
+</body>
+</html>

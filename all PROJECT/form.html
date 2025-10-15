@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    position: relative; 
+    background-color: white; 
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    opacity: 1.0;
+    color: black; 
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 50px;
+    margin: 0.0; 
+    padding: 20px; 
+    position: relative;
+    z-index: 1; 
+  }
+
+  h1 span {
+    background-color: white;
+    padding: 10px; 
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: auto;
+  }
+
+  td {
+    padding: 15px;
+    border: 2px solid black;
+    color: black;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select,
+  input[type="radio"],
+  input[type="email"],
+  input[type="tel"] {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white; 
+    color: black; 
+  }
+
+  input[type="submit"] {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: limegreen;
+  }
+
+  .option-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .option-group label {
+    margin-right: 10px;
+  }
+
+  alert {
+    color: red;
+  }
+
+</style>
+ 
+</head>
+<body>
+  <h1><span>Fill Form</span></h1>
+  
+  <form id="patient-form" onsubmit="return validateForm()">
+    <table>
+      <tr>
+        <td><label for="name">Full Name:</label></td>
+        <td><input type="text" id="name" name="name"></td>
+        <td><label for="age">Age:</label></td>
+        <td><input type="number" id="age" name="age"></td>
+      </tr>
+      <tr>
+        <td><label for="gender">Gender:</label></td>
+        <td class="option-group">
+          <label><input type="radio" name="gender" value="male"> Male</label>
+          <label><input type="radio" name="gender" value="female"> Female</label>
+        </td>
+        <td><label for="insurance">Insurance:</label></td>
+        <td class="option-group">
+          <label><input type="radio" name="insurance" value="yes"/> Yes</label>
+          <label><input type="radio" name="insurance" value="no"/> No</label>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="relationship">Relationship Status:</label></td>
+        <td colspan="3">
+          <select id="relationship" name="relationship">
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="nationality">Nationality:</label></td>
+        <td colspan="3">
+          <select id="nationality" name="nationality">
+            <option value="Jordan">Jordan</option>
+            <option value="UAE">UAE</option>
+            <option value="Qatar">Qatar</option>
+            <option value="Oman">Oman</option>
+            <option value="KSA">KSA</option>
+            <option value="Kuwait">Kuwait</option>
+            <option value="Bahrain">Bahrain</option>
+            <option value="Syria">Syria</option>
+            <option value="Palestine">Palestine</option>
+            <option value="Lebanon">Lebanon</option>
+            <option value="Iraq">Iraq</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Sudan">Sudan</option>
+            <option value="Europe">Europe</option>
+            <option value="US">US</option>
+            <option value="UK">UK</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="operations">Prior Operations:</label></td>
+        <td colspan="3"><input type="text" id="operations" name="operations"></td>
+      </tr>
+      <tr>
+        <td><label for="allergies">Allergies:</label></td>
+        <td colspan="3"><input type="text" id="allergies" name="allergies"></td>
+      </tr>
+      <tr>
+        <td><label for="doctor-name">Doctor's Name:</label></td>
+        <td colspan="3"><input type="text" id="doctor-name" name="doctor-name" ></td>
+      </tr>
+      <tr>
+        <td><label for="appointment-time">Appointment Time:</label></td>
+        <td colspan="3"><input type="text" id="appointment-time" name="appointment-time" ></td>
+      </tr>
+      <tr>
+        <td><label for="email">Email:</label></td>
+        <td colspan="3"><input type="email" id="email" name="email"></td>
+      </tr>
+      <tr>
+        <td><label for="phone">Mobile Number:</label></td>
+        <td colspan="3"><input type="tel" id="phone" name="phone"></td>
+      </tr>
+      <tr>
+        <td colspan="4"><input type="submit" value="Submit"></td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+    window.onload = function() {
+      var selectedDoctor = localStorage.getItem('selectedDoctor');
+      var selectedTime = localStorage.getItem('selectedTime');
+      if (selectedDoctor && selectedTime) {
+        document.getElementById('doctor-name').value = selectedDoctor;
+        document.getElementById('appointment-time').value = selectedTime;
+      }
+    };
+
+    function validateForm() {
+      var name = document.getElementById('name').value;
+      var age = document.getElementById('age').value;
+      var phone = document.getElementById('phone').value;
+
+      var nameRegex = /^[a-zA-Z\s]*$/;
+      var ageRegex = /^\d+$/;
+      var phoneRegex = /^\d{10}$/;
+
+      if (!name.match(nameRegex)) {
+        alert('Please enter a valid name in the name section (only letters).');
+        return false;
+      }
+
+      if (!age.match(ageRegex)) {
+        alert('Please enter a valid age in the age section (only numbers).');
+        return false;
+      }
+
+      if (!phone.match(phoneRegex)) {
+        alert('Please enter a valid mobile number (exactly 10 digits).');
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>

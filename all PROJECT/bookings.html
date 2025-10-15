@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Bookings</title> 
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: black; 
+  background-image: url('bookingyz.png');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  color: white;
+  margin: 0; 
+  padding: 0;
+  overflow: hidden; 
+}
+
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; 
+    }
+    table {
+      width: 80%;
+      margin: 0 auto; 
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+      background-color: rgba(255, 255, 255, 0.5); 
+      color: black;
+      font-size: 18px;
+    }
+    th {
+      background-color: #001EDE; 
+      color: black;
+    }
+    .hour-slot {
+      cursor: pointer;
+      border-bottom: 5px solid black; 
+      transition: background-color 0.3s; 
+    }
+    .hour-slot:hover {
+      background-color: #8BC34A; 
+    }
+  </style>
+</head>
+<body>
+  
+    <h1 style="color: lightblue; font-size: 40px; text-align: center;font-family: fantasy  ">Available Bookings</h1>
+<div class="container">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Specialty</th>
+        <th>Available Time Slots</th>
+      </tr>
+      <tr class="doctor" id="doctorDetails">
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+     
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const selectedDoctor = urlParams.get('doctor');
+
+      
+      const doctorDetailsRow = document.getElementById('doctorDetails');
+      const doctors = {
+        "Dr. John Doe": { specialty: "Cardiologist", slots: ["6:00 AM - 7:00 AM", "7:00 AM - 8:00 AM", "8:00 AM - 9:00 AM" , "3:00 PM - 4:00 PM","4:00 PM - 5:00 PM","5:00 PM - 6:00 PM"] },
+        "Dr. Jane Smith": { specialty: "Neurologist", slots: ["7:00 AM - 8:00 AM", "8:00 AM - 9:00 AM", "9:00 AM - 10:00 AM" , "3:00 PM - 4:00 PM","4:00 PM - 5:00 PM","5:00 PM - 6:00 PM"] },
+        "Dr. Anthony Fauci": { specialty: "General Surgery", slots: ["8:00 AM - 9:00 AM", "9:00 AM - 10:00 AM", "10:00 AM - 11:00 AM" , "3:00 PM - 4:00 PM","4:00 PM - 5:00 PM","5:00 PM - 6:00 PM"] },
+        "Dr. Jane Goodall": { specialty: "Obstetrics & Gynaecology", slots: ["9:00 AM - 10:00 AM", "10:00 AM - 11:00 AM", "11:00 AM - 12:00 PM" , "3:00 PM - 4:00 PM","4:00 PM - 5:00 PM","5:00 PM - 6:00 PM"] },
+        "Dr. Albert Schweitzer": { specialty: "Oral & Maxillofacial Surgery", slots: ["10:00 AM - 11:00 AM", "11:00 AM - 12:00 PM", "12:00 PM - 1:00 PM" , "3:00 PM - 4:00 PM","4:00 PM - 5:00 PM","5:00 PM - 6:00 PM"] },
+        "Dr. Mae Jemison": { specialty: "Orthopedic", slots: ["11:00 AM - 12:00 PM", "12:00 PM - 1:00 PM", "1:00 PM - 2:00 PM" , "3:00 PM - 4:00 PM","4:00 PM - 5:00 PM","5:00 PM - 6:00 PM"] },
+        "Dr. Patch Adams": { specialty: "Paediatric", slots: ["12:00 PM - 1:00 PM", "1:00 PM - 2:00 PM", "2:00 PM - 3:00 PM" , "3:00 PM - 4:00 PM","4:00 PM - 5:00 PM","5:00 PM - 6:00 PM"] }
+      };
+
+      if (selectedDoctor && doctors[selectedDoctor]) {
+        const doctor = doctors[selectedDoctor];
+        doctorDetailsRow.innerHTML = `
+          <td>${selectedDoctor}</td>
+          <td>${doctor.specialty}</td>
+          <td>
+            ${doctor.slots.map(slot => `<div class="hour-slot" onclick="fillForm('${selectedDoctor}', '${slot}')">${slot}</div>`).join('')}
+          </td>
+        `;
+      } else {
+        doctorDetailsRow.innerHTML = '<td colspan="3">Doctor not found</td>';
+      }
+    });
+
+    function fillForm(doctorName, appointmentTime) {
+      localStorage.setItem('selectedDoctor', doctorName);
+      localStorage.setItem('selectedTime', appointmentTime);
+      // Redirect to the form page
+      window.location.href = 'form.html';
+    }
+  </script>
+</body>
+</html>
